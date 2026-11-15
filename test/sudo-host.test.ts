@@ -129,13 +129,15 @@ describe("sudo host handlers", () => {
     const result = await sudo.run(
       {
         ...base,
-        argv: ["node", "-e", "console.log(JSON.stringify(process.argv.slice(1)))", ...tricky],
+        argv: [process.execPath, "-e", "console.log(JSON.stringify(process.argv.slice(1)))", ...tricky],
         password: "pw",
       },
       context(),
     );
     expect(result.outcome).toBe("ran");
     if (result.outcome !== "ran") return;
+    expect(result.exitCode).toBe(0);
+    expect(result.stderr).toBe("");
     expect(JSON.parse(result.stdout)).toEqual(tricky);
   });
 
@@ -163,16 +165,30 @@ describe("sudo host handlers", () => {
     expect(result).toMatchObject({ outcome: "ran", timedOut: true });
   });
 
-  test("the deadline is enforced as root by coreutils timeout", async () => {
+  test("the deadline wrapper terminates the command and reports timeout", async () => {
+    // A real subprocess deadline, portable to macOS without coreutils.
+    // sudo is still the test double; no elevated command runs in this suite.
+    const timeoutBinary = join(dir, "timeout");
+    writeFileSync(timeoutBinary, `#!${process.execPath}
+const { spawn } = require("node:child_process");
+const [flag, grace, duration, command, ...args] = process.argv.slice(2);
+if (flag !== "-k" || grace !== "5s" || duration !== "1s") process.exit(2);
+const child = spawn(command, args, { stdio: "inherit", shell: false });
+let expired = false;
+const timer = setTimeout(() => { expired = true; child.kill("SIGKILL"); }, 1000);
+child.on("error", () => { clearTimeout(timer); process.exit(127); });
+child.on("close", code => { clearTimeout(timer); process.exit(expired ? 124 : (code ?? 128)); });
+`);
+    chmodSync(timeoutBinary, 0o755);
     const sudo = createSudoHandlers(
-      createSudoRunner({ binary: setup("pw"), timeoutBinary: "/usr/bin/timeout" }),
+      createSudoRunner({ binary: setup("pw"), timeoutBinary }),
     );
     const result = await sudo.run(
       { ...base, timeoutMs: 1_000, argv: ["sleep", "5"], password: "pw" },
       context(),
     );
     expect(result).toMatchObject({ outcome: "ran", exitCode: 124, timedOut: true });
-    expect(calls().at(-1)).toBe("-S -k -p  -- /usr/bin/timeout -k 5s 1s sleep 5");
+    expect(calls().at(-1)).toBe(`-S -k -p  -- ${timeoutBinary} -k 5s 1s sleep 5`);
   });
 
   test("forgetting mid-run does not corrupt the password in use", async () => {

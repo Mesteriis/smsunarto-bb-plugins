@@ -1,5 +1,39 @@
 # @smsunarto/bb-plugin-monokai
 
+## [0.6.0](https://github.com/smsunarto/bb-plugins/compare/monokai/v0.5.0...monokai/v0.6.0) (2026-11-16)
+
+
+### Features
+
+* **monokai:** add native project clear control ([a2349c6](https://github.com/smsunarto/bb-plugins/commit/a2349c65c22dca489c940ca1c1d27e95a28aa83f))
+* **monokai:** add tertiary-foreground and info tokens ([b682abc](https://github.com/smsunarto/bb-plugins/commit/b682abc1b22704170a07ad919387d2893f8e9824))
+* **monokai:** Capy shell palette, inset page, and centered home ([aa70019](https://github.com/smsunarto/bb-plugins/commit/aa700196d332f367f0fbbc4594a1b6b7d7b47896))
+* **monokai:** Capy's inset page in the framed macOS window ([7d01fae](https://github.com/smsunarto/bb-plugins/commit/7d01faecddee3b3afa502b7e8a796842696705f5))
+* **monokai:** put the project clear button after the row on phones ([4231835](https://github.com/smsunarto/bb-plugins/commit/42318351d7f0b80df249df860319d9917dd66dff))
+* **monokai:** sidebar motion on Capy's timing ([57fa9f0](https://github.com/smsunarto/bb-plugins/commit/57fa9f01f10ae4b7785b743ddb4216cb7001a067))
+* **workarounds:** track bb-defect workarounds for removal after bb upgrades ([ffa279c](https://github.com/smsunarto/bb-plugins/commit/ffa279c466749a5dbf01dce7deae52dbf95abc36))
+
+
+### Bug Fixes
+
+* **markdown-editor,monokai:** keep Markdown editors at 16px on phones ([df71b59](https://github.com/smsunarto/bb-plugins/commit/df71b599720858853de114b46724923769d8be38))
+* **monokai:** align the thread composer with the new-thread one in light mode ([382f061](https://github.com/smsunarto/bb-plugins/commit/382f061a01be774de091c39760d18de1a0d7f0e4))
+* **monokai:** draw focus rings inside controls so containers cannot clip them ([f7bb56a](https://github.com/smsunarto/bb-plugins/commit/f7bb56ab360b3171ce7c391d402bfeddc0a52096))
+* **monokai:** draw the compact drawer's ring above its content ([34f9b55](https://github.com/smsunarto/bb-plugins/commit/34f9b55ffe18a1f2c8aa1e5fb9e655d65b590df7))
+* **monokai:** keep the chat still when the right panel closes with the context card open ([ddd2234](https://github.com/smsunarto/bb-plugins/commit/ddd2234d71ee3086435e226ecdc4fe02dc303655))
+* **monokai:** match floating menu to composer background ([efaa9cd](https://github.com/smsunarto/bb-plugins/commit/efaa9cd31eec271ff1ffbd703d5ed08384e6c4c4))
+* **monokai:** match YAML colors in bundled Monaco ([f3c270f](https://github.com/smsunarto/bb-plugins/commit/f3c270fa9909b06fec944543350b91f4bb8b3861))
+* **monokai:** move inset hairline to BB 0.49's inset-edge outline ([cb0ccde](https://github.com/smsunarto/bb-plugins/commit/cb0ccdeeaa752a59ace2b11be6e4e89916b499e6))
+* **monokai:** render desktop pane outlines as hairlines ([fa7ba4a](https://github.com/smsunarto/bb-plugins/commit/fa7ba4abd893676f15024fa6570a89ea5a507114))
+* **packaging:** bundle private runtime dependencies in release tarballs ([d344351](https://github.com/smsunarto/bb-plugins/commit/d3443517c9dda8c779a049f438f4fefa86253d99))
+* **ui:** let Monokai give shared controls the fills of bb's own ([3e5780a](https://github.com/smsunarto/bb-plugins/commit/3e5780a73b28303c7920d13a5f5a93667922707d))
+
+
+### Performance Improvements
+
+* **monokai:** scope diff-header scans to the secondary panel ([7ff396b](https://github.com/smsunarto/bb-plugins/commit/7ff396b3213402bd6b40122da755cc1d1f19870f))
+* **plugins:** narrow audited remaining utility scopes ([aeb6f69](https://github.com/smsunarto/bb-plugins/commit/aeb6f6993dd798316aab5eb83ae8bc106386bf63))
+
 ## [0.5.0](https://github.com/smsunarto/bb-plugins/compare/monokai/v0.4.0...monokai/v0.5.0) (2026-10-21)
 
 

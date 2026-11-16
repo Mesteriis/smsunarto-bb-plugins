@@ -20,6 +20,33 @@
 - Reopen the toolbar's event stream when it closes for good (a plugin reload, a server restart, the tunnel's offline page) or goes silent past two heartbeats, instead of polling every 4 seconds until the page reloads. The healthy safety-net poll drops from 30 seconds to 5 minutes, toolbars skip pulls for other pages' changes, and an unchanged pull no longer carries the annotation list.
 - The review panel, its header, and every staged-annotation banner share one request per change and skip changes that cannot affect them. Panel actions show their result at once instead of waiting for a refetch.
 
+## [0.4.0](https://github.com/smsunarto/bb-plugins/compare/agentation/v0.3.0...agentation/v0.4.0) (2026-11-16)
+
+
+### Features
+
+* **agentation,t3-composer:** show staged annotations as a chip beside attachments ([c7dc505](https://github.com/smsunarto/bb-plugins/commit/c7dc505865c2b7ebd90815fa06fdae4c0a9f8b57))
+* **agentation:** add configurable feedback mode shortcut ([0d7af64](https://github.com/smsunarto/bb-plugins/commit/0d7af648e476014311f4e9e76d158f72fa220886))
+* **agentation:** discard all staged annotations without confirmation ([68899ad](https://github.com/smsunarto/bb-plugins/commit/68899ad9912d3fc3b2cfd32bc59389ba41b54c12))
+* **agentation:** open feedback with Escape then A ([baf92ae](https://github.com/smsunarto/bb-plugins/commit/baf92aee4ae09beddfe7e8818555534cf616e329))
+* **agentation:** optionally keep the shared Agentation server running on each machine ([fec3ee8](https://github.com/smsunarto/bb-plugins/commit/fec3ee86f303407b1c717061458e014ca77e5625))
+* **agentation:** show the shortcut in a shorter footer tooltip ([27e1012](https://github.com/smsunarto/bb-plugins/commit/27e101210a5cf7507e605ed7eb51fcd1e7e17179))
+
+
+### Bug Fixes
+
+* **agentation:** hide the composer chip when the plugin server is unreachable ([35031ed](https://github.com/smsunarto/bb-plugins/commit/35031ed6d5afc659106eb0e84d588b177e900803))
+* **agentation:** keep annotations assigned while bb resumes a turn it interrupted to restart ([88edb29](https://github.com/smsunarto/bb-plugins/commit/88edb295c7247adf0f1df287f56f7f69e004a430))
+* **agentation:** record the assigned thread only once delivery is confirmed ([882c261](https://github.com/smsunarto/bb-plugins/commit/882c261299a05a99c749e65d2ae64a952f198097))
+* **ci:** repair plugin checks and refresh browser fixtures ([27346fe](https://github.com/smsunarto/bb-plugins/commit/27346fe2e791d1c645a6021d5fa509312f755461))
+* **packaging:** bundle private runtime dependencies in release tarballs ([d344351](https://github.com/smsunarto/bb-plugins/commit/d3443517c9dda8c779a049f438f4fefa86253d99))
+
+
+### Performance Improvements
+
+* **plugins:** drop space and divide utilities from thread-page sheets ([12cb427](https://github.com/smsunarto/bb-plugins/commit/12cb42716b14c70553a2821d97ed54ed66eb1d06))
+* **plugins:** narrow audited remaining utility scopes ([aeb6f69](https://github.com/smsunarto/bb-plugins/commit/aeb6f6993dd798316aab5eb83ae8bc106386bf63))
+
 ## [0.3.0](https://github.com/smsunarto/bb-plugins/compare/agentation/v0.2.3...agentation/v0.3.0) (2026-09-15)
 
 ### Features

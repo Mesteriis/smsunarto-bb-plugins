@@ -39,10 +39,10 @@
     "LICENSE"
   ],
   "dependencies": {
+    "@bb-plugins/ui": "file:vendor/ui",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@bb-plugins/ui": "file:vendor/ui",
     "@get-bb/plugin-sdk": "0.6.132",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
